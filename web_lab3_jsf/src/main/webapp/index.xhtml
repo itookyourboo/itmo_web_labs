@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="base.xhtml">
+    <ui:define name="head">
+        <title>Web №3 - Start Page</title>
+        <h:outputStylesheet library="css" name="index.css"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <div id="index-content">
+            <h1 id="title">ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР<br/>ВЫЧИСЛИТЕЛЬНЫХ ТЕХНОЛОГИЙ</h1>
+            <div class="clock">
+                <div class="wrap">
+                    <span class="hour"/>
+                    <span class="minute"/>
+                    <span class="second"/>
+                    <span class="dot"/>
+                </div>
+            </div>
+            <h:link id="index-link" outcome="directToMain">
+                Перейти на главную страницу
+            </h:link>
+            <h:outputScript library="js" name="index.js"/>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

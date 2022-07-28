@@ -1,0 +1,46 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+}
+
+#header {
+    padding: 8px;
+    font-family: cursive;
+    background-color: #e2e2e2;
+}
+
+#header h1 {
+    margin: 0
+}
+
+#header h1:first-letter {
+    color: red;
+}
+
+#header h2 {
+    margin: 0
+}
+
+#content {
+    flex: auto;
+    margin: 0;
+
+    animation-name: bg-animation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes bg-animation {
+    0%      {background-color: #ffffff;}
+    25%     {background-color: #fafafa;}
+    50%     {background-color: #e2e2e2;}
+    75%     {background-color: #fafafa;}
+    100%    {background-color: #ffffff;}
+}

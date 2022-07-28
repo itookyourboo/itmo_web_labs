@@ -1,0 +1,1 @@
+JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.port=4447 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false  -Dsun.util.logging.disableCallerCheck=true  -Djava.rmi.server.hostname=localhost -Dcom.sun.management.jmxremote.local.only=false"

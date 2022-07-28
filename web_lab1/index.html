@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#"/>
+    <title>Web lab №1</title>
+    <style>
+        body {
+            margin: 0;
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "x-param y-param"
+                "r-param r-param"
+                "areas areas"
+                "sbm sbm"
+                "err err"
+                "tbl tbl";
+            grid-template-columns: 50% 50%;
+            grid-gap: 8px;
+            animation-name: bg-animation;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes bg-animation {
+            0%      {background-color: #ffffff;}
+            25%     {background-color: #fafafa;}
+            50%     {background-color: #e2e2e2;}
+            75%     {background-color: #fafafa;}
+            100%    {background-color: #ffffff;}
+        }
+
+        header {
+            grid-area: header;
+            padding: 8px;
+            font-family: cursive;
+            background-color: #e2e2e2;
+        }
+
+        header h1 {
+            margin: 0
+        }
+
+        header h1:first-letter {
+            color: red;
+        }
+
+        header h2 {
+            margin: 0
+        }
+
+        .container {
+            padding: 8px;
+        }
+
+        .param {
+            margin-top: 8px;
+        }
+
+        .param.x-param {
+            display: flex;
+            align-items: center;
+            grid-area: x-param;
+            justify-self: center;
+        }
+
+        .param.y-param {
+            vertical-align: center;
+            grid-area: y-param;
+            justify-self: center;
+        }
+
+        .param.r-param {
+            display: flex;
+            align-items: center;
+            grid-area: r-param;
+            justify-self: center;
+        }
+
+        .checkbox-centered {
+            display: flex;
+            margin-right: 8px;
+        }
+
+        .checkbox-centered label {
+            margin-left: 2px;
+        }
+
+        #x-checkboxes {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        #r-buttons {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+        }
+
+        .r-button {
+            height: 40px;
+            width: 80px;
+            margin: 8px;
+        }
+
+        #areas {
+            grid-area: areas;
+            justify-self: center;
+        }
+
+        .submit-btn {
+            grid-area: sbm;
+            width: 200px;
+            height: 64px;
+            justify-self: center;
+        }
+
+        #errors {
+            grid-area: err;
+            list-style-type: none
+        }
+
+        #result-table {
+            grid-area: tbl;
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+            color: white
+        }
+
+        #result-table tr {
+            height: 2em;
+        }
+
+        #result-table tr.table-header:hover {
+            background-color: #c8b5e9;
+        }
+
+        .coords-col {
+            width: 12%;
+        }
+
+        .time-col {
+            width: 25%;
+        }
+
+        tr {
+            background-color: gray;
+        }
+
+        tr.hit-no {
+            font-style: italic;
+            color: black;
+            background-color: indianred;
+        }
+
+        tr.hit-yes {
+            color: initial;
+            background-color: lightgreen;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>Лабораторная работа №1. Вариант 13212</h1>
+    <h2>Харламов Александр Сергеевич, P3213</h2>
+</header>
+
+<div class="param x-param">
+    <label for="x-checkboxes">X: </label>
+    <div id="x-checkboxes"></div>
+</div>
+
+<div class="param y-param">
+    <label for="y-input">Y: </label>
+    <input id="y-input" type="text" name="y_val" maxlength="10" autocomplete="off" placeholder="(-3; 3)">
+</div>
+
+<div class="param r-param">
+    <label for="r-buttons">R: </label>
+    <div id="r-buttons"></div>
+</div>
+
+<!--<img id="areas" src="img/areas.png" alt="areas"/>-->
+
+<svg id="areas" width="300px" height="300px"></svg>
+
+<input id="checkBtn" class="submit-btn" type="submit" onclick="submit()" value="Проверить">
+
+<ul id="errors" style="list-style-type: none"></ul>
+
+<table id="result-table">
+    <tr class="table-header">
+        <th class="coords-col">X</th>
+        <th class="coords-col">Y</th>
+        <th class="coords-col">R</th>
+        <th class="time-col">Время запроса</th>
+        <th class="time-col">Время исполнения</th>
+        <th class="hitres-col">Попадание</th>
+    </tr>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="js/generate_form.js"></script>
+<script src="js/generate_areas.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

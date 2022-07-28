@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:composition template="base.xhtml">
+    <ui:define name="head">
+        <h:outputStylesheet library="css" name="app.css"/>
+        <title>Web №3 - Main Page</title>
+    </ui:define>
+    <ui:define name="content">
+        <div id="app-content">
+            <svg id="areas" width="300px" height="300px" xmlns="http://www.w3.org/2000/svg" version="1.1"/>
+            <h:form id="form" style="width: 100%">
+                <table cellspacing="8px">
+                    <tbody>
+                    <tr>
+                        <td>X</td>
+                        <td class="param-row">
+                            <p:spinner id="x" value="#{pointBean.x}" min="-4" max="4" stepFactor="0.5"
+                                       converterMessage="X не является числом"
+                                       validatorMessage="X не входит в ОДЗ (-4; 4)">
+                                <f:validateRequired/>
+                                <f:validateDoubleRange minimum="-4" maximum="4"/>
+                            </p:spinner>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Y</td>
+                        <td class="param-row">
+                            <p:inputText id="y" value="#{pointBean.y}" style="width: 100%"
+                                         converterMessage="Y не является числом"
+                                         validatorMessage="Y не входит в ОДЗ (-5; 5)">
+                                <f:validateRequired/>
+                                <f:validateDoubleRange minimum="-5" maximum="5"/>
+                            </p:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>R</td>
+                        <td class="param-row">
+                            <div class="r-param">
+                                <c:forEach var="i" begin="1" end="5" step="1">
+                                    <p:commandLink styleClass="r-group">
+                                        <h:outputText styleClass="r-text" value="#{i}"/>
+                                    </p:commandLink>
+                                </c:forEach>
+                                <h:inputHidden id="r_hidden" value="#{pointBean.r}" required="true"
+                                               requiredMessage="Выберите R"/>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h:messages style="color:red;margin:8px;"/>
+                <p:commandButton id="submitButton" type="submit" value="Проверить"
+                                 action="#{pointBean.addPointIfCorrect}"
+                                 oncomplete="redrawPoints();"
+                                 update="@form jsf_table"/>
+                <h:outputScript library="js" name="app.js"/>
+            </h:form>
+            <h:panelGroup layout="block" id="jsf_table" style="width: 100%; margin-top: 16px">
+                <div id="outputContainer">
+                    <table id="result-table">
+                        <tr class="table-header">
+                            <th class="coords-col">X</th>
+                            <th class="coords-col">Y</th>
+                            <th class="coords-col">R</th>
+                            <th class="time-col">Время запроса</th>
+                            <th class="hitres-col">Попадание</th>
+                        </tr>
+                        <ui:repeat value="#{pointBean.points}" var="point">
+                            <tr class="#{point.hit? 'hit-yes': 'hit-no'}">
+                                <td class="table-x-value">#{point.x}</td>
+                                <td class="table-y-value">#{point.y}</td>
+                                <td class="table-r-value">#{point.r}</td>
+                                <td>#{point.currentTime}</td>
+                                <td class="table-hit-value">#{(point.hit? "Да" : "Нет")}</td>
+                            </tr>
+                        </ui:repeat>
+                    </table>
+                </div>
+            </h:panelGroup>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+        <script src="https://d3js.org/d3.v7.min.js" type="text/javascript"></script>
+        <h:outputScript library="js" name="generate_areas.js"/>
+    </ui:define>
+</ui:composition>
+</html>

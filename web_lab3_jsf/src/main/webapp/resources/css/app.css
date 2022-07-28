@@ -1,0 +1,111 @@
+#app-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16px;
+    gap: 16px;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.param-row {
+    line-height: 40px;
+}
+
+.r-text {
+    font-size: 18px;
+}
+
+.x-param {
+
+}
+
+.y-param {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.r-param {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+}
+
+#areas {
+    grid-area: areas;
+    justify-self: center;
+}
+
+.submit-btn {
+    margin-top: 8px;
+    width: 200px;
+    height: 64px;
+    justify-self: center;
+}
+
+#checkBtn {
+    grid-area: sbm;
+    justify-self: end;
+}
+
+#clearBtn {
+    grid-area: clr;
+    justify-self: start;
+}
+
+#errors {
+    grid-area: err;
+    list-style-type: none
+}
+
+#outputContainer {
+    grid-area: tbl;
+    width: 100%;
+}
+
+#result-table {
+    /*grid-area: tbl;*/
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    color: white
+}
+
+#result-table tr {
+    height: 2em;
+}
+
+#result-table tr.table-header:hover {
+    background-color: #c8b5e9;
+}
+
+.coords-col {
+    width: 12%;
+}
+
+.time-col {
+    width: 25%;
+}
+
+#outputContainer tr {
+    background-color: gray;
+}
+
+#outputContainer tr.hit-no {
+    font-style: italic;
+    color: black;
+    background-color: indianred;
+}
+
+#outputContainer tr.hit-yes {
+    color: initial;
+    background-color: lightgreen;
+}
